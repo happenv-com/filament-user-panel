@@ -1,5 +1,5 @@
 {
-    "name": "happenv/filament-user-profile",
+    "name": "happenv-com/filament-user-profile",
     "description": "Simple filament user profile.",
     "keywords": [
         "filament",
@@ -7,7 +7,7 @@
         "user",
         "profile"
     ],
-    "homepage": "https://github.com/webard/filament-user-profile",
+    "homepage": "https://github.com/happenv-com/filament-user-profile",
     "license": "MIT",
     "authors": [
         {
@@ -18,20 +18,18 @@
     ],
     "require": {
         "php": "^8.2",
-        "filament/filament": "^3.0.9",
-        "illuminate/contracts": "^11.0|^12.0",
+        "filament/filament": "^4.0|^5.0",
         "jenssegers/agent": "^2.6",
         "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
-        "larastan/larastan": "^2.0|^3.0",
+        "larastan/larastan": "^3.0",
         "laravel/pint": "^1.0",
         "laravel/sanctum": "^4.0",
-        "orchestra/testbench": "^8.8|^9.0|^10.0",
-        "pestphp/pest": "^2.20|^3.7",
-        "pestphp/pest-plugin-arch": "^2.0|^v3.0.0",
-        "pestphp/pest-plugin-laravel": "^2.0|^v3.1.0",
-        "pestphp/pest-plugin-livewire": "^2.1|^v3.0.0"
+        "orchestra/testbench": "^8.8|^9.0|^10.0|^11.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "pestphp/pest-plugin-livewire": "^4.0"
     },
     "autoload": {
         "psr-4": {
