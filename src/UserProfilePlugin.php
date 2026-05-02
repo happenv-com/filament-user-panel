@@ -10,6 +10,7 @@ use Filament\Support\Concerns\EvaluatesClosures;
 use Happenv\FilamentUserProfile\Livewire\BrowserSessions;
 use Happenv\FilamentUserProfile\Livewire\PersonalInfo;
 use Happenv\FilamentUserProfile\Livewire\SanctumTokens;
+use Happenv\FilamentUserProfile\Livewire\TwoFactorAuth;
 use Happenv\FilamentUserProfile\Livewire\UpdatePassword;
 use Happenv\FilamentUserProfile\Pages\MyProfilePage;
 use Livewire\Livewire;
@@ -28,6 +29,8 @@ class UserProfilePlugin implements Plugin
         'update_password' => UpdatePassword::class,
         'browser_sessions' => BrowserSessions::class,
         'sanctum_tokens' => SanctumTokens::class,
+        'passkeys' => \Happenv\FilamentUserProfile\Livewire\Passkeys::class,
+        'two_factor_auth' => TwoFactorAuth::class,
     ];
 
     protected bool $hasAvatars = true;
