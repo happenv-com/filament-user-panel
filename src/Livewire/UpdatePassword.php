@@ -6,12 +6,13 @@ use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 class UpdatePassword extends MyProfileComponent
 {
-    protected string $view = 'filament-user-profile::livewire.update-password';
+    protected string $view = 'happenv-filament-user-profile::livewire.update-password';
 
     public ?array $data = [];
 
@@ -24,22 +25,22 @@ class UpdatePassword extends MyProfileComponent
         $this->user = Filament::getCurrentPanel()->auth()->user();
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $form): Schema
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('current_password')
-                    ->label(__('filament-user-profile::default.password_confirm.current_password'))
+                    ->label(__('happenv-filament-user-profile::default.password_confirm.current_password'))
                     ->required()
                     ->password()
                     ->rule('current_password'),
                 Forms\Components\TextInput::make('new_password')
-                    ->label(__('filament-user-profile::default.fields.new_password'))
+                    ->label(__('happenv-filament-user-profile::default.fields.new_password'))
                     ->password()
                     ->rules([Password::defaults()])
                     ->required(),
                 Forms\Components\TextInput::make('new_password_confirmation')
-                    ->label(__('filament-user-profile::default.fields.new_password_confirmation'))
+                    ->label(__('happenv-filament-user-profile::default.fields.new_password_confirmation'))
                     ->password()
                     ->same('new_password')
                     ->required(),
@@ -58,7 +59,7 @@ class UpdatePassword extends MyProfileComponent
         $this->reset(['data']);
         Notification::make()
             ->success()
-            ->title(__('filament-user-profile::default.profile.password.notify'))
+            ->title(__('happenv-filament-user-profile::default.profile.password.notify'))
             ->send();
     }
 }

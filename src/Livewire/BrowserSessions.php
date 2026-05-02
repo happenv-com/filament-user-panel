@@ -3,21 +3,27 @@
 namespace Happenv\FilamentUserProfile\Livewire;
 
 use Carbon\Carbon;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Actions;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Actions as ComponentsActions;
+use Filament\Schemas\Schema;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Jenssegers\Agent\Agent;
 
-class BrowserSessions extends MyProfileComponent
+class BrowserSessions extends MyProfileComponent implements HasForms
 {
-    protected string $view = 'filament-user-profile::livewire.browser-sessions';
+    use InteractsWithForms;
+    protected string $view = 'happenv-filament-user-profile::livewire.browser-sessions';
 
-    protected string $listView = 'filament-user-profile::components.browser-sessions-list';
+    protected string $listView = 'happenv-filament-user-profile::components.browser-sessions-list';
 
     public array $data;
 
@@ -30,29 +36,29 @@ class BrowserSessions extends MyProfileComponent
         return config('session.driver') === 'database';
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $form): Schema
     {
 
         return $form
             ->schema([
                 Forms\Components\ViewField::make('browserSessions')
-                    ->label(__('filament-user-profile::default.profile.browser_sessions.label'))
+                    ->label(__('happenv-filament-user-profile::default.profile.browser_sessions.label'))
                     ->hiddenLabel()
                     ->view($this->listView)
                     ->viewData(['data' => self::getSessions()]),
 
-                Actions::make([
-                    Actions\Action::make('deleteBrowserSessions')
-                        ->label(__('filament-user-profile::default.profile.browser_sessions.logout_other_sessions'))
+                ComponentsActions::make([
+                    Action::make('deleteBrowserSessions')
+                        ->label(__('happenv-filament-user-profile::default.profile.browser_sessions.logout_other_sessions'))
                         ->requiresConfirmation()
-                        ->modalHeading(__('filament-user-profile::default.profile.browser_sessions.logout_heading'))
-                        ->modalDescription(__('filament-user-profile::default.profile.browser_sessions.logout_description'))
-                        ->modalSubmitActionLabel(__('filament-user-profile::default.profile.browser_sessions.logout_action'))
+                        ->modalHeading(__('happenv-filament-user-profile::default.profile.browser_sessions.logout_heading'))
+                        ->modalDescription(__('happenv-filament-user-profile::default.profile.browser_sessions.logout_description'))
+                        ->modalSubmitActionLabel(__('happenv-filament-user-profile::default.profile.browser_sessions.logout_action'))
                         ->form([
                             Forms\Components\TextInput::make('password')
                                 ->password()
                                 ->revealable()
-                                ->label(__('filament-user-profile::default.fields.password'))
+                                ->label(__('happenv-filament-user-profile::default.fields.password'))
                                 ->required(),
                         ])
                         ->action(function (array $data) {
@@ -102,7 +108,7 @@ class BrowserSessions extends MyProfileComponent
         if (! Hash::check($password, Auth::user()->getAuthPassword())) {
             Notification::make()
                 ->danger()
-                ->title(__('filament-user-profile::default.profile.browser_sessions.incorrect_password'))
+                ->title(__('happenv-filament-user-profile::default.profile.browser_sessions.incorrect_password'))
                 ->send();
 
             return;
@@ -119,7 +125,7 @@ class BrowserSessions extends MyProfileComponent
 
         Notification::make()
             ->success()
-            ->title(__('filament-user-profile::default.profile.browser_sessions.logout_success'))
+            ->title(__('happenv-filament-user-profile::default.profile.browser_sessions.logout_success'))
             ->send();
     }
 

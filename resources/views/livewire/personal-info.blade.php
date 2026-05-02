@@ -1,10 +1,10 @@
 <x-filament::section :aside="true">
     <x-slot name="heading">
-        {{__('filament-user-profile::default.profile.personal_info.heading')}}
+        {{__('happenv-filament-user-profile::default.profile.personal_info.heading')}}
     </x-slot>
 
     <x-slot name="description">
-        {{__('filament-user-profile::default.profile.personal_info.subheading')}}
+        {{__('happenv-filament-user-profile::default.profile.personal_info.subheading')}}
     </x-slot>
 
     <div class="">
@@ -14,7 +14,7 @@
 
             <div class="text-right">
                 <x-filament::button type="submit" form="submit" class="align-right">
-                    {{ __('filament-user-profile::default.profile.personal_info.submit.label') }}
+                    {{ __('happenv-filament-user-profile::default.profile.personal_info.submit.label') }}
                 </x-filament::button>
             </div>
         </form>

@@ -6,11 +6,13 @@ use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Model;
 
 class PersonalInfo extends MyProfileComponent
 {
-    protected string $view = 'filament-user-profile::livewire.personal-info';
+    protected string $view = 'happenv-filament-user-profile::livewire.personal-info';
 
     public ?array $data = [];
 
@@ -36,7 +38,7 @@ class PersonalInfo extends MyProfileComponent
 
     protected function getProfileFormSchema(): array
     {
-        $groupFields = Forms\Components\Group::make([
+        $groupFields = Group::make([
             $this->getNameComponent(),
             $this->getEmailComponent(),
         ])->columnSpan(2);
@@ -50,7 +52,7 @@ class PersonalInfo extends MyProfileComponent
     {
         return Forms\Components\TextInput::make('name')
             ->required()
-            ->label(__('filament-user-profile::default.fields.name'));
+            ->label(__('happenv-filament-user-profile::default.fields.name'));
     }
 
     protected function getEmailComponent(): Forms\Components\TextInput
@@ -62,10 +64,10 @@ class PersonalInfo extends MyProfileComponent
             ->required()
             ->email()
             ->unique($this->userClass, ignorable: $userModel)
-            ->label(__('filament-user-profile::default.fields.email'));
+            ->label(__('happenv-filament-user-profile::default.fields.email'));
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $form): Schema
     {
         return $form
             ->schema($this->getProfileFormSchema())
@@ -88,7 +90,7 @@ class PersonalInfo extends MyProfileComponent
     {
         Notification::make()
             ->success()
-            ->title(__('filament-user-profile::default.profile.personal_info.notify'))
+            ->title(__('happenv-filament-user-profile::default.profile.personal_info.notify'))
             ->send();
     }
 }

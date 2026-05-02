@@ -30,9 +30,7 @@ class UserProfilePlugin implements Plugin
         'sanctum_tokens' => SanctumTokens::class,
     ];
 
-    protected bool $registerUserMenu = true;
-
-    protected bool $hasAvatars = false;
+    protected bool $hasAvatars = true;
 
     protected array $sanctumAbilities = [];
 
@@ -57,8 +55,12 @@ class UserProfilePlugin implements Plugin
     public function register(Panel $panel): void
     {
         $panel
-            ->pages([$this->getProfilePage()]);
+            //->profile($this->getProfilePage())
+            ;
 
+            $this->getRegisteredMyProfileComponents()->each(
+            fn (string $component, string $key) => Livewire::component($key, $component)
+        );
     }
 
     public function profilePage(string $page): static
@@ -124,45 +126,11 @@ class UserProfilePlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        $this->userMenuRegistration();
+        //$this->userMenuRegistration();
 
-        $this->getRegisteredMyProfileComponents()->each(
-            fn (string $component, string $key) => Livewire::component($key, $component)
-        );
+
     }
 
-    public function registerUserMenu(bool $condition = true)
-    {
-        $this->registerUserMenu = $condition;
-
-        return $this;
-    }
-
-    private function userMenuRegistration()
-    {
-        if ($this->registerUserMenu) {
-            Filament::serving(function () {
-                if (Filament::getCurrentPanel()->hasTenancy()) {
-                    // @phpstan-ignore-next-line
-                    $tenantId = request()->route()->parameter('tenant');
-                    if ($tenantId && $tenant = app(Filament::getCurrentPanel()->getTenantModel())::where(Filament::getCurrentPanel()->getTenantSlugAttribute() ?? 'id', $tenantId)->first()) {
-                        Filament::getCurrentPanel()->userMenuItems([
-                            'account' => MenuItem::make()->url($this->getProfilePage()::getUrl(panel: Filament::getCurrentPanel()->getId(), tenant: $tenant))->label(__('filament-user-profile::default.user_menu_label')),
-                        ]);
-                    }
-                } else {
-                    Filament::getCurrentPanel()->userMenuItems([
-                        'account' => MenuItem::make()->url($this->getProfilePage()::getUrl())->label(__('filament-user-profile::default.user_menu_label')),
-                    ]);
-                }
-            });
-        }
-    }
-
-    public function slug(): string
-    {
-        return $this->slug;
-    }
 
     public function getRegisteredMyProfileComponents()
     {

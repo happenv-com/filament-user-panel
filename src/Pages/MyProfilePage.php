@@ -3,13 +3,15 @@
 namespace Happenv\FilamentUserProfile\Pages;
 
 use Filament\Pages\Page;
+use Filament\Panel;
 use Happenv\FilamentUserProfile\UserProfilePlugin;
+use Filament\Auth\Pages\EditProfile as BasePage;
 
-class MyProfilePage extends Page
+class MyProfilePage extends BasePage
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament-user-profile::filament.pages.my-profile';
+    protected string $view = 'happenv-filament-user-profile::filament.pages.my-profile';
 
     public static function getPlugin(): UserProfilePlugin
     {
@@ -21,33 +23,31 @@ class MyProfilePage extends Page
 
     public function getTitle(): string
     {
-        return __('filament-user-profile::default.profile.my_profile');
+        return __('happenv-filament-user-profile::default.profile.my_profile');
     }
 
     public function getHeading(): string
     {
-        return __('filament-user-profile::default.profile.my_profile');
+        return __('happenv-filament-user-profile::default.profile.my_profile');
+    }
+
+     public static function getLabel(): string
+    {
+        return static::$title ?? __('filament-panels::auth/pages/edit-profile.label');
     }
 
     public function getSubheading(): ?string
     {
-        return __('filament-user-profile::default.profile.subheading') ?? null;
+        return __('happenv-filament-user-profile::default.profile.subheading') ?? null;
     }
 
-    public static function getSlug(): string
-    {
-        return static::getPlugin()->slug();
-    }
+
 
     public static function getNavigationLabel(): string
     {
-        return __('filament-user-profile::default.profile.profile');
+        return __('happenv-filament-user-profile::default.profile.profile');
     }
 
-    public static function shouldRegisterNavigation(): bool
-    {
-        return false;
-    }
 
     public function getRegisteredMyProfileComponents()
     {

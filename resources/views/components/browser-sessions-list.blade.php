@@ -6,7 +6,7 @@
         <div class="">
             <div class="text-sm text-gray-600">
                 <div class="text-sm text-gray-600 dark:text-gray-400">
-                    {{ __('filament-user-profile::default.profile.browser_sessions.content') }}
+                    {{ __('happenv-filament-user-profile::default.profile.browser_sessions.content') }}
                 </div>
                 @if (count($data) > 0)
                     <div class="mt-3 space-y-3">
@@ -36,9 +36,9 @@
                                             {{ $session->ip_address }},
 
                                             @if ($session->is_current_device)
-                                                <span class="font-semibold text-primary-500">{{ __('filament-user-profile::default.profile.browser_sessions.device') }}</span>
+                                                <span class="font-semibold text-primary-500">{{ __('happenv-filament-user-profile::default.profile.browser_sessions.device') }}</span>
                                             @else
-                                                {{ __('filament-user-profile::default.profile.browser_sessions.last_active') }} {{ $session->last_active }}
+                                                {{ __('happenv-filament-user-profile::default.profile.browser_sessions.last_active') }} {{ $session->last_active }}
                                             @endif
                                         </div>
                                     </div>
