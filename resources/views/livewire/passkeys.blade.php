@@ -1,17 +1,17 @@
 <x-filament::section :aside="true">
     <x-slot name="heading">
-        {{ __('filament-passkeys::passkeys.passkeys') }}
+        {{ __('happenv-filament-user-profile::default.profile.passkeys.title') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('filament-passkeys::passkeys.description') }}
+        {{ __('happenv-filament-user-profile::default.profile.passkeys.description') }}
     </x-slot>
 
     <div>
     <div>
         <form id="passkeyForm" wire:submit="validatePasskeyProperties" class="flex items-start space-x-2">
             <div class="w-full fi-fo-field">
-                <x-filament::input.wrapper prefix="{{ __('filament-passkeys::passkeys.name') }}" :valid="! $errors->has('name')">
+                <x-filament::input.wrapper prefix="{{ __('happenv-filament-user-profile::default.profile.passkeys.name') }}" :valid="! $errors->has('name')">
                     <x-filament::input
                         type="text"
                         wire:model="name"
@@ -24,21 +24,21 @@
             </div>
 
             <x-filament::button type="submit">
-                {{ __('passkeys::passkeys.create') }}
+                {{ __('happenv-filament-user-profile::default.profile.passkeys.create') }}
             </x-filament::button>
         </form>
     </div>
 
     @if($passkeys->isNotEmpty())
         <div class="mt-6">
-            <span class="font-bold text-sm">{{ __('filament-passkeys::passkeys.passkeys') }}</span>
+            <span class="font-bold text-sm">{{ __('happenv-filament-user-profile::default.profile.passkeys.title') }}</span>
             <ul class="space-y-4">
                 @foreach($passkeys as $passkey)
                     <x-filament::fieldset class="mt-2">
                         <div class="flex items-center">
                             <div class="mr-2 flex flex-col">
                                 <span>{{ $passkey->name }}</span>
-                                <span class="text-xs fi-sc-text">{{ __('passkeys::passkeys.last_used') }}: {{ $passkey->last_used_at?->diffForHumans() ?? __('passkeys::passkeys.not_used_yet') }}</span>
+                                <span class="text-xs fi-sc-text">{{ __('happenv-filament-user-profile::default.profile.passkeys.last_used') }}: {{ $passkey->last_used_at?->diffForHumans() ?? __('happenv-filament-user-profile::default.profile.passkeys.not_used_yet') }}</span>
                             </div>
 
                             <div class="ml-auto">

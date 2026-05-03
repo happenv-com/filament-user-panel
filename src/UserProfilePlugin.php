@@ -26,10 +26,10 @@ class UserProfilePlugin implements Plugin
     protected array $profileComponents = [
         'personal_info' => PersonalInfo::class,
         'update_password' => UpdatePassword::class,
-        'browser_sessions' => BrowserSessions::class,
-        'sanctum_tokens' => SanctumTokens::class,
         'passkeys' => Passkeys::class,
         'two_factor_auth' => TwoFactorAuth::class,
+        'browser_sessions' => BrowserSessions::class,
+        'sanctum_tokens' => SanctumTokens::class,
     ];
 
     protected bool $hasAvatars = true;

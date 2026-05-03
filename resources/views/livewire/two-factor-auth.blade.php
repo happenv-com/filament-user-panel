@@ -1,10 +1,10 @@
 <x-filament::section :aside="true">
     <x-slot name="heading">
-        {{ __('filament-passkeys::passkeys.passkeys') }}
+        {{ __('happenv-filament-user-profile::default.profile.two_factor.title') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('filament-passkeys::passkeys.description') }}
+        {{ __('happenv-filament-user-profile::default.profile.two_factor.description') }}
     </x-slot>
 
 

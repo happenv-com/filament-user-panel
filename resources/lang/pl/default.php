@@ -62,6 +62,18 @@ return [
                 'label' => 'Token został skopiowany',
             ],
         ],
+        'passkeys' => [
+            'title' => 'Klucze dostępu',
+            'description' => 'Klucze dostępu umożliwiają bezpieczne logowanie bez hasła.',
+            'name' => 'Nazwa',
+            'create' => 'Utwórz',
+            'last_used' => 'Ostatnio użyty',
+            'not_used_yet' => 'Jeszcze nie używany',
+        ],
+        'two_factor' => [
+            'title' => 'Uwierzytelnianie dwuskładnikowe',
+            'description' => 'Dodaj dodatkowe zabezpieczenie do swojego konta za pomocą uwierzytelniania dwuskładnikowego.',
+        ],
     ],
     'fields' => [
         'avatar' => 'Awatar',

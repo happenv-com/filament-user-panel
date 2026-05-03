@@ -4,6 +4,7 @@ namespace Happenv\FilamentUserProfile\Livewire;
 
 use Filament\Facades\Filament;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Schema;
@@ -35,12 +36,26 @@ class PersonalInfo extends MyProfileComponent
         $this->getForm('form')->fill($userModel->only($this->only));
     }
 
+    public function getAvatarUploadComponent()
+    {
+        $fileUpload = FileUpload::make('avatar_url')
+            ->label(__('filament-breezy::default.fields.avatar'))
+            ->avatar()
+            ->disk('public')
+            ->directory('avatars');
+
+        return $fileUpload;
+    }
+
     protected function getProfileFormSchema(): array
     {
         $groupFields = Group::make([
+            $this->getAvatarUploadComponent()->columnSpan(1),
+           Group::make([
             $this->getNameComponent(),
             $this->getEmailComponent(),
-        ])->columnSpan(2);
+           ])->columnSpan(2),
+        ])->columnSpanFull()->columns(3);
 
         return [
             $groupFields,
