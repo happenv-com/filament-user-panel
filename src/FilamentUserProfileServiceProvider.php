@@ -2,13 +2,11 @@
 
 namespace Happenv\FilamentUserProfile;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
-use Livewire\Livewire;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentUserProfileServiceProvider extends PackageServiceProvider
 {
@@ -20,7 +18,7 @@ class FilamentUserProfileServiceProvider extends PackageServiceProvider
             ->hasTranslations();
     }
 
-     public function packageBooted(): void
+    public function packageBooted(): void
     {
         // Asset Registration
         FilamentAsset::register(
@@ -28,7 +26,6 @@ class FilamentUserProfileServiceProvider extends PackageServiceProvider
             'happenv/filament-user-profile',
         );
     }
-
 
     protected function getAssets(): array
     {

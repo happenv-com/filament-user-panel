@@ -7,16 +7,9 @@ namespace Happenv\FilamentUserProfile\Livewire;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\EditAction;
-use Filament\Facades\Filament;
-use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
-use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use Spatie\LaravelPasskeys\Livewire\PasskeysComponent;
 

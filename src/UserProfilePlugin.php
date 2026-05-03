@@ -6,6 +6,7 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Happenv\FilamentUserProfile\Livewire\BrowserSessions;
+use Happenv\FilamentUserProfile\Livewire\Passkeys;
 use Happenv\FilamentUserProfile\Livewire\PersonalInfo;
 use Happenv\FilamentUserProfile\Livewire\SanctumTokens;
 use Happenv\FilamentUserProfile\Livewire\TwoFactorAuth;
@@ -27,7 +28,7 @@ class UserProfilePlugin implements Plugin
         'update_password' => UpdatePassword::class,
         'browser_sessions' => BrowserSessions::class,
         'sanctum_tokens' => SanctumTokens::class,
-        'passkeys' => \Happenv\FilamentUserProfile\Livewire\Passkeys::class,
+        'passkeys' => Passkeys::class,
         'two_factor_auth' => TwoFactorAuth::class,
     ];
 
