@@ -39,7 +39,7 @@ class PersonalInfo extends MyProfileComponent
     public function getAvatarUploadComponent()
     {
         $fileUpload = FileUpload::make('avatar_url')
-            ->label(__('filament-breezy::default.fields.avatar'))
+            ->label(__('happenv-filament-user-profile::default.fields.avatar'))
             ->avatar()
             ->disk('public')
             ->directory('avatars');
@@ -47,15 +47,35 @@ class PersonalInfo extends MyProfileComponent
         return $fileUpload;
     }
 
-    protected function getProfileFormSchema(): array
+    public function getAvatarGroupSchema(): array
     {
-        $groupFields = Group::make([
-            $this->getAvatarUploadComponent()->columnSpan(1),
-           Group::make([
+        return [
+            $this->getAvatarUploadComponent()
+        ];
+    }
+
+    public function getPersonalDataFormSchema(): array
+    {
+        return [
             $this->getNameComponent(),
             $this->getEmailComponent(),
-           ])->columnSpan(2),
-        ])->columnSpanFull()->columns(3);
+        ];
+    }
+
+    protected function getProfileFormSchema(): array
+    {
+        if (! $this->getPlugin()->hasAvatars()) {
+            return $this->getPersonalDataFormSchema();
+        }
+
+        $groupFields = Group::make([
+            ...$this->getAvatarGroupSchema(),
+
+            Group::make(
+                $this->getPersonalDataFormSchema(),
+           )->columnSpan(3),
+
+        ])->columnSpanFull()->columns(4);
 
         return [
             $groupFields,

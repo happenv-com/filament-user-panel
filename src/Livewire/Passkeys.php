@@ -21,7 +21,7 @@ final class Passkeys extends PasskeysComponent implements HasActions, HasSchemas
     public function deleteAction(): Action
     {
         return Action::make('delete')
-            ->label(__('passkeys::passkeys.delete'))
+            ->label(__('happenv-filament-user-profile::default.profile.passkeys.delete'))
             ->color('danger')
             ->requiresConfirmation()
             ->action(fn (array $arguments) => $this->deletePasskey($arguments['passkey']));
@@ -32,7 +32,7 @@ final class Passkeys extends PasskeysComponent implements HasActions, HasSchemas
         parent::deletePasskey($passkeyId);
 
         Notification::make()
-            ->title(__('filament-passkeys::passkeys.deleted_notification_title'))
+            ->title(__('happenv-filament-user-profile::default.profile.passkeys.deleted_notification_title'))
             ->success()
             ->send();
     }
@@ -42,7 +42,7 @@ final class Passkeys extends PasskeysComponent implements HasActions, HasSchemas
         parent::storePasskey($passkey);
 
         Notification::make()
-            ->title(__('filament-passkeys::passkeys.created_notification_title'))
+            ->title(__('happenv-filament-user-profile::default.profile.passkeys.created_notification_title'))
             ->success()
             ->send();
     }

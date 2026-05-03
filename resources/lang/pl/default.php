@@ -67,8 +67,11 @@ return [
             'description' => 'Klucze dostępu umożliwiają bezpieczne logowanie bez hasła.',
             'name' => 'Nazwa',
             'create' => 'Utwórz',
+            'delete' => 'Usuń',
             'last_used' => 'Ostatnio użyty',
             'not_used_yet' => 'Jeszcze nie używany',
+            'deleted_notification_title' => 'Klucz dostępu usunięty pomyślnie',
+            'created_notification_title' => 'Klucz dostępu utworzony pomyślnie',
         ],
         'two_factor' => [
             'title' => 'Uwierzytelnianie dwuskładnikowe',

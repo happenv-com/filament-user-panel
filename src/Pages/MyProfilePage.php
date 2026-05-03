@@ -14,7 +14,7 @@ class MyProfilePage extends BasePage
     public static function getPlugin(): UserProfilePlugin
     {
         /** @var UserProfilePlugin $plugin */
-        $plugin = filament('filament-user-profile');
+        $plugin = filament('happenv-filament-user-profile');
 
         return $plugin;
     }

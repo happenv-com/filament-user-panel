@@ -67,8 +67,11 @@ return [
             'description' => 'Passkeys allow you to sign in securely without a password.',
             'name' => 'Name',
             'create' => 'Create',
+            'delete' => 'Delete',
             'last_used' => 'Last used',
             'not_used_yet' => 'Not used yet',
+            'deleted_notification_title' => 'Passkey deleted successfully',
+            'created_notification_title' => 'Passkey created successfully',
         ],
         'two_factor' => [
             'title' => 'Two-Factor Authentication',

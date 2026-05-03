@@ -32,13 +32,25 @@ class UserProfilePlugin implements Plugin
         'sanctum_tokens' => SanctumTokens::class,
     ];
 
-    protected bool $hasAvatars = true;
+    protected bool $hasAvatars = false;
 
     protected array $sanctumAbilities = [];
 
     public function getId(): string
     {
-        return 'filament-user-profile';
+        return 'happenv-filament-user-profile';
+    }
+
+    public function avatars(bool $condition = true): static
+    {
+        $this->hasAvatars = $condition;
+
+        return $this;
+    }
+
+    public function hasAvatars(): bool
+    {
+        return $this->hasAvatars;
     }
 
     public static function make(): static
@@ -56,10 +68,7 @@ class UserProfilePlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-
-        // ->profile($this->getProfilePage())
-
-        $this->getRegisteredMyProfileComponents()->each(
+        collect($this->getProfileComponents())->each(
             fn (string $component, string $key) => Livewire::component($key, $component)
         );
     }
@@ -134,9 +143,6 @@ class UserProfilePlugin implements Plugin
     public function getRegisteredMyProfileComponents()
     {
         $components = collect($this->getProfileComponents())
-            ->each(
-                fn (string $component, $key) => Livewire::component($key, $component)
-            )
             ->filter(
                 function (string $component) {
                     if (\method_exists($component, 'canView')) {
