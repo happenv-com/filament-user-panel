@@ -12,7 +12,6 @@ use Livewire\Livewire;
 
 class FilamentUserProfileServiceProvider extends PackageServiceProvider
 {
-
     public function configurePackage(Package $package): void
     {
         $package
@@ -23,7 +22,6 @@ class FilamentUserProfileServiceProvider extends PackageServiceProvider
 
      public function packageBooted(): void
     {
-
         // Asset Registration
         FilamentAsset::register(
             $this->getAssets(),
