@@ -33,8 +33,8 @@ class UpdatePassword extends MyProfileComponent
                     ->required()
                     ->revealable()
                     ->password()
-                     ->autocomplete('current-password')
-            ->currentPassword(guard: Filament::getAuthGuard()),
+                    ->autocomplete('current-password')
+                    ->currentPassword(guard: Filament::getAuthGuard()),
                 Forms\Components\TextInput::make('new_password')
                     ->label(__('happenv-filament-user-profile::default.fields.new_password'))
                     ->password()
@@ -57,8 +57,8 @@ class UpdatePassword extends MyProfileComponent
     public function submit()
     {
         $data = collect($this->getForm('form')->getState())
-        ->only('new_password')
-        ->all();
+            ->only('new_password')
+            ->all();
 
         $this->user->update([
             'password' => Hash::make($data['new_password']),

@@ -50,7 +50,7 @@ class PersonalInfo extends MyProfileComponent
     public function getAvatarGroupSchema(): array
     {
         return [
-            $this->getAvatarUploadComponent()
+            $this->getAvatarUploadComponent(),
         ];
     }
 
@@ -73,7 +73,7 @@ class PersonalInfo extends MyProfileComponent
 
             Group::make(
                 $this->getPersonalDataFormSchema(),
-           )->columnSpan(3),
+            )->columnSpan(3),
 
         ])->columnSpanFull()->columns(4);
 
