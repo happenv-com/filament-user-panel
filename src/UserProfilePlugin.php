@@ -3,8 +3,6 @@
 namespace Happenv\FilamentUserProfile;
 
 use Filament\Contracts\Plugin;
-use Filament\Facades\Filament;
-use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Happenv\FilamentUserProfile\Livewire\BrowserSessions;
@@ -57,11 +55,10 @@ class UserProfilePlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel
-            //->profile($this->getProfilePage())
-            ;
 
-            $this->getRegisteredMyProfileComponents()->each(
+        // ->profile($this->getProfilePage())
+
+        $this->getRegisteredMyProfileComponents()->each(
             fn (string $component, string $key) => Livewire::component($key, $component)
         );
     }
@@ -129,11 +126,9 @@ class UserProfilePlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        //$this->userMenuRegistration();
-
+        // $this->userMenuRegistration();
 
     }
-
 
     public function getRegisteredMyProfileComponents()
     {

@@ -5,10 +5,8 @@ namespace Happenv\FilamentUserProfile\Livewire;
 use Carbon\Carbon;
 use Filament\Actions\Action;
 use Filament\Forms;
-use Filament\Forms\Components\Actions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Actions as ComponentsActions;
 use Filament\Schemas\Schema;
@@ -21,6 +19,7 @@ use Jenssegers\Agent\Agent;
 class BrowserSessions extends MyProfileComponent implements HasForms
 {
     use InteractsWithForms;
+
     protected string $view = 'happenv-filament-user-profile::livewire.browser-sessions';
 
     protected string $listView = 'happenv-filament-user-profile::components.browser-sessions-list';

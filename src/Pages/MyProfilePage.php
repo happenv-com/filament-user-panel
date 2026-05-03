@@ -2,10 +2,8 @@
 
 namespace Happenv\FilamentUserProfile\Pages;
 
-use Filament\Pages\Page;
-use Filament\Panel;
-use Happenv\FilamentUserProfile\UserProfilePlugin;
 use Filament\Auth\Pages\EditProfile as BasePage;
+use Happenv\FilamentUserProfile\UserProfilePlugin;
 
 class MyProfilePage extends BasePage
 {
@@ -31,7 +29,7 @@ class MyProfilePage extends BasePage
         return __('happenv-filament-user-profile::default.profile.my_profile');
     }
 
-     public static function getLabel(): string
+    public static function getLabel(): string
     {
         return static::$title ?? __('filament-panels::auth/pages/edit-profile.label');
     }
@@ -41,13 +39,10 @@ class MyProfilePage extends BasePage
         return __('happenv-filament-user-profile::default.profile.subheading') ?? null;
     }
 
-
-
     public static function getNavigationLabel(): string
     {
         return __('happenv-filament-user-profile::default.profile.profile');
     }
-
 
     public function getRegisteredMyProfileComponents()
     {
