@@ -1,12 +1,10 @@
-
-
 <x-filament::section :aside="true">
     <x-slot name="heading">
-        {{__('filament-user-profile::default.profile.password.heading')}}
+        {{$this->getTitle()}}
     </x-slot>
 
     <x-slot name="description">
-        {{__('filament-user-profile::default.profile.password.subheading')}}
+        {{$this->getDescription()}}
     </x-slot>
 
     <div class="">
@@ -16,7 +14,7 @@
 
             <div class="text-right">
                 <x-filament::button type="submit" form="submit" class="align-right">
-                    {{ __('filament-user-profile::default.profile.password.submit.label') }}
+                    {{ __('happenv-filament-user-profile::default.profile.personal_info.submit.label') }}
                 </x-filament::button>
             </div>
         </form>
