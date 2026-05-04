@@ -2,8 +2,8 @@
     'data'
 ])
 <a x-data="{}"
-    x-on:click.prevent="window.navigator.clipboard.writeText(@js($data));$tooltip('{{ __('filament-user-profile::default.clipboard.tooltip') }}');"
+    x-on:click.prevent="window.navigator.clipboard.writeText(@js($data));$tooltip('{{ __('happenv-filament-user-profile::default.clipboard.tooltip') }}');"
     href="#" class="flex items-center">
     @svg('heroicon-s-clipboard-document', 'w-4 mr-2')
-    <span class="">{{ __('filament-user-profile::default.clipboard.link') }}</span>
+    <span class="">{{ __('happenv-filament-user-profile::default.clipboard.link') }}</span>
 </a>

@@ -1,9 +1,8 @@
 <x-filament::page>
-    <div class="space-y-6 divide-y divide-gray-900/10 dark:divide-white/10">
-
+    <div class="flex flex-col divide-y space-y-6 divide-gray-900/10 dark:divide-white/10">
         @foreach ($this->getRegisteredMyProfileComponents() as $component)
             @unless(is_null($component))
-            <div class="pt-6">
+            <div class="pb-6">
                 @livewire($component)
             </div>
             @endunless

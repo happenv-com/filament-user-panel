@@ -19,13 +19,13 @@ class PasswordButtonAction extends Action
         if (! $this->isPasswordSessionValid()) {
             // Require password confirmation
             $this->requiresConfirmation()
-                ->modalHeading(__('filament-user-profile::default.password_confirm.heading'))
+                ->modalHeading(__('happenv-filament-user-profile::default.password_confirm.heading'))
                 ->modalDescription(
-                    __('filament-user-profile::default.password_confirm.description')
+                    __('happenv-filament-user-profile::default.password_confirm.description')
                 )
                 ->form([
                     Forms\Components\TextInput::make('current_password')
-                        ->label(__('filament-user-profile::default.password_confirm.current_password'))
+                        ->label(__('happenv-filament-user-profile::default.password_confirm.current_password'))
                         ->required()
                         ->password()
                         ->rule('current_password'),
