@@ -52,7 +52,7 @@ abstract class MyProfileComponent extends Component implements HasActions, HasFo
         static::$sort = $sort;
     }
 
-     public function submit(): void
+    public function submit(): void
     {
         /** @var Model $userModel */
         $userModel = $this->user;
@@ -64,13 +64,14 @@ abstract class MyProfileComponent extends Component implements HasActions, HasFo
         $this->sendNotification();
 
         if ($redirectUrl = $this->getRedirectUrl()) {
-             $this->redirect($redirectUrl, navigate: FilamentView::hasSpaMode($redirectUrl));
+            $this->redirect($redirectUrl, navigate: FilamentView::hasSpaMode($redirectUrl));
         }
     }
 
-        public function getRedirectUrl(): ?string {
-            return null;
-        }
+    public function getRedirectUrl(): ?string
+    {
+        return null;
+    }
 
     protected function sendNotification(): void
     {

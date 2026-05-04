@@ -118,7 +118,6 @@ class UserProfilePlugin implements Plugin
         return $this;
     }
 
-
     public function insertAfterProfileComponent(string $afterKey, string $key, string $component): static
     {
         $newComponents = [];
@@ -169,17 +168,17 @@ class UserProfilePlugin implements Plugin
 
                     return true;
                 }
-             );
-            // ->sortBy(
-            //     function (string $component) {
-            //         if (\method_exists($component, 'getSort')) {
-            //             return $component::getSort();
-            //         }
+            );
+        // ->sortBy(
+        //     function (string $component) {
+        //         if (\method_exists($component, 'getSort')) {
+        //             return $component::getSort();
+        //         }
 
-            //         // put at last place
-            //         return 999;
-            //     }
-            // );
+        //         // put at last place
+        //         return 999;
+        //     }
+        // );
 
         return $components;
     }
