@@ -17,6 +17,12 @@ abstract class MyProfileComponent extends Component implements HasActions, HasFo
 
     protected string $view = 'happenv-filament-user-profile::livewire.edit-component';
 
+    public ?array $data = [];
+
+    public $user;
+
+    public $userClass;
+
     public static $sort = 0;
 
     public function getName()

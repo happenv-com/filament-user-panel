@@ -24,7 +24,7 @@ class BrowserSessions extends MyProfileComponent implements HasForms
 
     protected string $listView = 'happenv-filament-user-profile::components.browser-sessions-list';
 
-    public array $data;
+    public ?array $data;
 
     public static $sort = 50;
 

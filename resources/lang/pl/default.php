@@ -13,7 +13,7 @@ return [
             'submit' => [
                 'label' => 'Zapisz',
             ],
-            'notify' => 'Dane osobowe zaktualizowane pomyślnie!',
+            'notify' => 'Dane osobowe zostały zaktualizowane',
         ],
         'browser_sessions' => [
             'heading' => 'Sesje przeglądarki',
@@ -30,12 +30,12 @@ return [
             'logout_success' => 'Wszystkie inne sesje przeglądarki zostały pomyślnie wylogowane.',
         ],
         'password' => [
-            'heading' => 'Twoje hasło',
+            'heading' => 'Hasło',
             'subheading' => 'Hasło powinno składać się przynajmniej 8 znaków.',
             'submit' => [
                 'label' => 'Zapisz',
             ],
-            'notify' => 'Hasło zostało zaktualizowane pomyślnie!',
+            'notify' => 'Hasło zostało zaktualizowane',
         ],
         'password_confirm' => [
             'heading' => 'Potwierdź hasło',
@@ -46,7 +46,7 @@ return [
             'title' => 'Tokeny API',
             'description' => 'Zarządzaj tokenami API, które pozwalają aplikacjom zewnętrznym uzyskać dostęp do Twoich danych.',
             'create' => [
-                'notify' => 'Token stworzony pomyślnie!',
+                'notify' => 'Token został utworzony',
                 'message' => 'Token jest widoczny tylko raz podczas tworzenia. Jeśli zgubisz token, będziesz musiał go usunąć i utworzyć nowy.',
                 'submit' => [
                     'label' => 'Stwórz token',
