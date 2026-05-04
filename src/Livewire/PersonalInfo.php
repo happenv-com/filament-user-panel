@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PersonalInfo extends MyProfileComponent
 {
-    protected string $view = 'happenv-filament-user-profile::livewire.personal-info';
+    protected string $view = 'happenv-filament-user-profile::livewire.edit-component';
 
     public ?array $data = [];
 
@@ -20,9 +20,17 @@ class PersonalInfo extends MyProfileComponent
 
     public $userClass;
 
-    public static $sort = 10;
-
     public array $only = ['name', 'email'];
+
+    public function getTitle(): string
+    {
+        return __('happenv-filament-user-profile::default.profile.personal_info.heading');
+    }
+
+    public function getDescription(): string
+    {
+        return __('happenv-filament-user-profile::default.profile.personal_info.subheading');
+    }
 
     public function mount(): void
     {
@@ -41,6 +49,8 @@ class PersonalInfo extends MyProfileComponent
         $fileUpload = FileUpload::make('avatar_url')
             ->label(__('happenv-filament-user-profile::default.fields.avatar'))
             ->avatar()
+            ->imagePreviewHeight('200px')
+            ->imageAspectRatio('1:1')
             ->disk('public')
             ->directory('avatars');
 
@@ -73,9 +83,9 @@ class PersonalInfo extends MyProfileComponent
 
             Group::make(
                 $this->getPersonalDataFormSchema(),
-            )->columnSpan(3),
+            )->columnSpan(2),
 
-        ])->columnSpanFull()->columns(4);
+        ])->columnSpanFull()->columns(3);
 
         return [
             $groupFields,
@@ -106,25 +116,5 @@ class PersonalInfo extends MyProfileComponent
         return $form
             ->schema($this->getProfileFormSchema())
             ->statePath('data');
-    }
-
-    public function submit(): void
-    {
-        /** @var Model $userModel */
-        $userModel = $this->user;
-
-        $data = collect($this->getForm('form')->getState())->only($this->only)->all();
-
-        $userModel->update($data);
-
-        $this->sendNotification();
-    }
-
-    protected function sendNotification(): void
-    {
-        Notification::make()
-            ->success()
-            ->title(__('happenv-filament-user-profile::default.profile.personal_info.notify'))
-            ->send();
     }
 }

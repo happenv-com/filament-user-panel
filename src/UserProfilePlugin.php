@@ -118,6 +118,24 @@ class UserProfilePlugin implements Plugin
         return $this;
     }
 
+
+    public function insertAfterProfileComponent(string $afterKey, string $key, string $component): static
+    {
+        $newComponents = [];
+
+        foreach ($this->profileComponents as $existingKey => $existingComponent) {
+            $newComponents[$existingKey] = $existingComponent;
+
+            if ($existingKey === $afterKey) {
+                $newComponents[$key] = $component;
+            }
+        }
+
+        $this->profileComponents = $newComponents;
+
+        return $this;
+    }
+
     public function sanctumAbilities(array $abilities): static
     {
         $this->sanctumAbilities = $abilities;
@@ -151,17 +169,17 @@ class UserProfilePlugin implements Plugin
 
                     return true;
                 }
-            )
-            ->sortBy(
-                function (string $component) {
-                    if (\method_exists($component, 'getSort')) {
-                        return $component::getSort();
-                    }
+             );
+            // ->sortBy(
+            //     function (string $component) {
+            //         if (\method_exists($component, 'getSort')) {
+            //             return $component::getSort();
+            //         }
 
-                    // put at last place
-                    return 999;
-                }
-            );
+            //         // put at last place
+            //         return 999;
+            //     }
+            // );
 
         return $components;
     }

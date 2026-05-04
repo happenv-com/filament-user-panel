@@ -11,13 +11,23 @@ use Illuminate\Validation\Rules\Password;
 
 class UpdatePassword extends MyProfileComponent
 {
-    protected string $view = 'happenv-filament-user-profile::livewire.update-password';
+    protected string $view = 'happenv-filament-user-profile::livewire.edit-component';
 
     public ?array $data = [];
 
     public $user;
 
     public static $sort = 20;
+
+    public function getTitle(): string
+    {
+        return __('happenv-filament-user-profile::default.profile.password.heading');
+    }
+
+    public function getDescription(): string
+    {
+        return __('happenv-filament-user-profile::default.profile.password.subheading');
+    }
 
     public function mount()
     {
@@ -51,10 +61,11 @@ class UpdatePassword extends MyProfileComponent
                     ->same('new_password')
                     ->required(),
             ])
+            ->inlineLabel()
             ->statePath('data');
     }
 
-    public function submit()
+    public function submit(): void
     {
         $data = collect($this->getForm('form')->getState())
             ->only('new_password')

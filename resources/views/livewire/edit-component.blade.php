@@ -1,10 +1,10 @@
 <x-filament::section :aside="true">
     <x-slot name="heading">
-        {{__('happenv-filament-user-profile::default.profile.personal_info.heading')}}
+        {{$this->getTitle()}}
     </x-slot>
 
     <x-slot name="description">
-        {{__('happenv-filament-user-profile::default.profile.personal_info.subheading')}}
+        {{$this->getDescription()}}
     </x-slot>
 
     <div class="">
